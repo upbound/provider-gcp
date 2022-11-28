@@ -74,9 +74,13 @@ spec:
                             virtualization enabled. Defaults to false.
                           type: boolean
                         threadsPerCore:
-                          description: he number of threads per physical core. To
+                          description: The number of threads per physical core. To
                             disable simultaneous multithreading (SMT) set this to
                             1.
+                          type: number
+                        visibleCoreCount:
+                          description: The number of physical cores to expose to an
+                            instance. visible cores info (VC).
                           type: number
                       type: object
                     type: array
@@ -645,6 +649,10 @@ spec:
                             restarted if it is terminated by Compute Engine (not terminated
                             by a user). This defaults to true.
                           type: boolean
+                        instanceTerminationAction:
+                          description: Describe the type of termination action for
+                            SPOT VM. Can be STOP or DELETE.  Read more on here
+                          type: string
                         minNodeCpus:
                           type: number
                         nodeAffinities:
