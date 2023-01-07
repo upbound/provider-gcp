@@ -44,9 +44,13 @@ type InstanceTemplateAdvancedMachineFeaturesParameters struct {
 	// +kubebuilder:validation:Optional
 	EnableNestedVirtualization *bool `json:"enableNestedVirtualization,omitempty" tf:"enable_nested_virtualization,omitempty"`
 
-	// he number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1.
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1.
 	// +kubebuilder:validation:Optional
 	ThreadsPerCore *float64 `json:"threadsPerCore,omitempty" tf:"threads_per_core,omitempty"`
+
+	// The number of physical cores to expose to an instance. visible cores info (VC).
+	// +kubebuilder:validation:Optional
+	VisibleCoreCount *float64 `json:"visibleCoreCount,omitempty" tf:"visible_core_count,omitempty"`
 }
 
 type InstanceTemplateConfidentialInstanceConfigObservation struct {
@@ -507,6 +511,10 @@ type InstanceTemplateSchedulingParameters struct {
 	// terminated by a user). This defaults to true.
 	// +kubebuilder:validation:Optional
 	AutomaticRestart *bool `json:"automaticRestart,omitempty" tf:"automatic_restart,omitempty"`
+
+	// Describe the type of termination action for SPOT VM. Can be STOP or DELETE.  Read more on here
+	// +kubebuilder:validation:Optional
+	InstanceTerminationAction *string `json:"instanceTerminationAction,omitempty" tf:"instance_termination_action,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	MinNodeCpus *float64 `json:"minNodeCpus,omitempty" tf:"min_node_cpus,omitempty"`
